@@ -37,15 +37,19 @@
       // Add initial index.html file in the subdomain folder for testing purposes
       file_put_contents($domain_dir_path . "/index.html", file_get_contents("./template.html"));
 
-      // Prepare SQL
-      $sql = "INSERT INTO users (userid, password, uid, gid, homedir, shell) VALUES ('". $clean_domain;
-      $sql += "','" . $generated_password . "', 5,6,'" . $domain_dir_path . "','bin/bash'";
+      if (count($errors) == 0) {
+          // Prepare SQL
+          $sql = "INSERT INTO users (userid, password, uid, gid, homedir, shell) VALUES ('". $clean_domain;
+          $sql += "','" . $generated_password . "', 5,6,'" . $domain_dir_path . "','bin/bash'";
 
-      // Exectute SQL
-      if ($conn->query($sql) !== true) {
-          $errors[] = "Failed to create a database record, please try again later";
-          // In case of failure, don't forget to remove the directory
-          rmdir($subdomains.$clean_domain);
+          echo $sql;
+
+          // Exectute SQL
+          if ($conn->query($sql) !== true) {
+              $errors[] = "Failed to create a database record, please try again later";
+              // In case of failure, don't forget to remove the directory
+              rmdir($subdomains.$clean_domain);
+          }
       }
   }
   // Close connection
