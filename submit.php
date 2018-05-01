@@ -97,13 +97,13 @@
           <hr />
           <dl class="row">
             <dt class="col-sm-3">Public domain</dt>
-            <dd class="col-sm-9"><a href="http://<?php echo $clean_domain . "." . $localdomain ?>"><?php echo $clean_domain . "." . $localdomain ?></a></dd>
+            <dd class="col-sm-9"><a href="http://<?php echo $clean_domain . "." . $localdomain ?>" target="_blank"><?php echo $clean_domain . "." . $localdomain ?></a></dd>
           </dl>
           <h3>FTP</h3>
           <hr />
           <dl class="row">
             <dt class="col-sm-3">Server name</dt>
-            <dd class="col-sm-9"><a href="<?php echo $ftpserver; ?>"><?php echo $ftpserver; ?></a></dd>
+            <dd class="col-sm-9"><?php echo $ftpserver; ?></dd>
 
             <dt class="col-sm-3">Username</dt>
             <dd class="col-sm-9"><?php echo $clean_domain ?></dd>
@@ -115,7 +115,7 @@
       </main>
       <br />
       <footer class="footer">
-        <p>© Company 2017</p>
+        <p>© ISPWE 2018</p>
       </footer>
 
     </div>

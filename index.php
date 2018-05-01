@@ -20,7 +20,7 @@
 
         <div class="jumbotron">
           <h1 class="display-3">Free Hosting</h1>
-          <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p class="lead">It can't get any easier than this, just pick an available domain name, click Register and we will set up everything for you in a blink of an eye.</p>
           <div class="row">
             <div class="col-md-6">
               <form method="post" action="./submit.php">
@@ -37,28 +37,28 @@
         </div>
         <div class="row marketing">
           <div class="col-lg-6">
-            <h4>Fast</h4>
-            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+            <h4>Blazing fast</h4>
+            <p>Or atleast as fast as PHP can go... sooo maybe not that fast, but shhh, don't tell the PHP devs or they will write another blog about it.</p>
 
             <h4>Reliable</h4>
-            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+            <p>It's school hardware, what would you expect?</p>
 
             <h4>Secure</h4>
-            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            <p>Probably as secure as your gardens back entrance.</p>
           </div>
 
           <div class="col-lg-6">
             <h4>Tough</h4>
-            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+            <p>Only a god of thunder can take us out... or when the janitor stumbles over the power cable.</p>
 
             <h4>Legal</h4>
-            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+            <p>Don't take my word for it.</p>
           </div>
         </div>
       </main>
 
       <footer class="footer">
-        <p>© Company 2017</p>
+        <p>© ISPWE 2018</p>
       </footer>
 
     </div>
