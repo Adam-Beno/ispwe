@@ -26,13 +26,22 @@
 
   // Check for errors
   if (count($errors) == 0) {
-      $domain_dir_path = $subdomains.$clean_domain;
+      $domain_dir_path = $subdomains.$clean_domain."/public";
       if (!mkdir($domain_dir_path)) {
           $errors[] = "Failed to create a subdirectory for your domain name, please try again later...";
       }
       file_put_contents($domain_dir_path . "/index.html", file_get_contents("./template.html"));
 
-      // TODO - Save username, password and domain to the databse for FTP
+      // Prepare SQL
+      $sql = "INSERT INTO users (userid, password, uid, gid, homedir, shell) VALUES ('". $clean_domain;
+      $sql += "','" . $generated_password . "', 5,6,'" . $domain_dir_path . "','bin/bash'";
+
+      // Exectute SQL
+      if ($conn->query($sql) !== true) {
+          $errors[] = "Failed to create a database record, please try again later";
+          // In case of failure, don't forget to remove the directory
+          rmdir($subdomains.$clean_domain);
+      }
   }
 ?>
 <!doctype html>

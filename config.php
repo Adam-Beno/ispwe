@@ -9,8 +9,8 @@
   // DB Config
   $servername = "localhost";
   $username = "root";
-  $password = "";
-  $dbname = "ispwe";
+  $password = "Nov3Heslo";
+  $dbname = "webserver";
 
   // Path to subdomain folder
-  $subdomains = "./subdomains/";
+  $subdomains = "./hosts/";
