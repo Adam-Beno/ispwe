@@ -6,7 +6,7 @@
   // Sanitize the domain string
   $clean_domain = preg_replace("/[^a-zA-Z0-9]+/", "", $_POST['domain_name']);
 
-  // Define errors
+  // Declare errors variable
   $errors = [];
 
   // Check if domain name is taken
