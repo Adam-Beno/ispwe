@@ -13,4 +13,4 @@
   $dbname = "webserver";
 
   // Path to subdomain folder
-  $subdomains = "var/www/hosts/";
+  $subdomains = "/var/www/hosts/";
