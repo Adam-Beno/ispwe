@@ -43,8 +43,6 @@
           $sql = "INSERT INTO users (userid, password, gid, homedir, shell) VALUES ('". $clean_domain;
           $sql .= "','" . $generated_password . "',6,'" . $domain_dir_path . "','bin/bash');";
 
-          echo $sql;
-
           // Exectute SQL
           if ($conn->query($sql) !== true) {
               $errors[] = "Failed to create a database record, please try again later";
