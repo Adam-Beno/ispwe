@@ -43,6 +43,8 @@
           rmdir($subdomains.$clean_domain);
       }
   }
+  // Close connection
+  $conn->close();
 ?>
 <!doctype html>
 <html lang="en">
