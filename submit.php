@@ -41,7 +41,7 @@
       if (count($errors) == 0) {
           // Prepare SQL
           $sql = "INSERT INTO users (userid, password, gid, homedir, shell) VALUES ('". $clean_domain;
-          $sql .= "','" . $generated_password . "',6,'" . $domain_dir_path . "','/bin/bash');";
+          $sql .= "','" . $generated_password . "',11,'" . $domain_dir_path . "','/bin/bash');";
 
           // Exectute SQL
           if ($conn->query($sql) !== true) {
