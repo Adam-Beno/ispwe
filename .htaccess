@@ -1,0 +1,23 @@
+# SOURCE https://webmasters.stackexchange.com/a/24150 <3
+<IfModule mod_rewrite.c>
+    Options +FollowSymLinks -Multiviews
+    RewriteEngine on
+    RewriteBase /
+    #
+    # Canonicalize the hostname
+    RewriteCond www.%{HTTP_HOST} ^(www)\.(ispwe\.lc) [OR]
+    RewriteCond %{HTTP_HOST} ^www\.([^.]+)\.(ispwe\.lc) [OR]
+    RewriteCond %{HTTP_HOST} ^([^.]+)\.www\.(ispwe\.lc) [OR]
+    RewriteCond %{HTTP_HOST} ^([^.]+)\.(ispwe\.lc). [OR]
+    RewriteCond %{HTTP_HOST} ^([^.]+)\.(ispwe\.lc):[0-9]+
+    RewriteRule (.*) http://%1.%2/$1 [R=301,L]
+    #
+    # If subdomain is NOT www
+    RewriteCond %{HTTP_HOST} !^www\.ispwe\.lc [NC]
+    # Extract (required) subdomain to %1
+    RewriteCond %{HTTP_HOST} ^([^.]+)\.ispwe\.lc$
+    # Rewrite if requested URL resolves to existing file or subdirectory in /subdomains/<subdomain>/ path
+    RewriteCond %{DOCUMENT_ROOT}/subdomains/%1/$1 -f [OR]
+    RewriteCond %{DOCUMENT_ROOT}/subdomains/%1/$1 -d
+    RewriteRule (.*) /subdomains/%1/$1 [L]
+</IfModule>
