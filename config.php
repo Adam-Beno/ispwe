@@ -3,8 +3,8 @@
   error_reporting(E_ERROR | E_PARSE);
 
   // Server config
-  $localdomain = "ispwe.lc";
-  $ftpserver = "ftp://ispwe.lc";
+  $localdomain = "fei-ispwe-1.upceucebny.cz";
+  $ftpserver = "fei-ispwe-1.upceucebny.cz";
 
   // DB Config
   $servername = "localhost";
