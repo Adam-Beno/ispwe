@@ -26,10 +26,15 @@
 
   // Check for errors
   if (count($errors) == 0) {
+      // Compose subdomain path
       $domain_dir_path = $subdomains.$clean_domain."/public";
+
+      // Create subdomain folder
       if (!mkdir($domain_dir_path)) {
           $errors[] = "Failed to create a subdirectory for your domain name, please try again later...";
       }
+
+      // Add initial index.html file in the subdomain folder for testing purposes
       file_put_contents($domain_dir_path . "/index.html", file_get_contents("./template.html"));
 
       // Prepare SQL
