@@ -28,16 +28,17 @@
   // Check for errors
   if (count($errors) == 0) {
       // Compose subdomain path
-      $domain_dir_path = $subdomains.$clean_domain."/public";
+      $domain_dir_path = $subdomains . $clean_domain . "/public";
 
       // Create subdomain folder
       if (!mkdir($domain_dir_path, 0777, true)) {
           $errors[] = "Failed to create a subdirectory for your domain name, please try again later...";
+      } else {
+          // Add initial index.html file in the subdomain folder for testing purposes
+          file_put_contents($domain_dir_path . "/index.html", file_get_contents("./template.html"));
       }
 
-      // Add initial index.html file in the subdomain folder for testing purposes
-      file_put_contents($domain_dir_path . "/index.html", file_get_contents("./template.html"));
-
+      // Check for errors again
       if (count($errors) == 0) {
           // Prepare SQL
           $sql = "INSERT INTO users (userid, password, gid, homedir, shell) VALUES ('". $clean_domain;
