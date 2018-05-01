@@ -30,7 +30,7 @@
       $domain_dir_path = $subdomains.$clean_domain."/public";
 
       // Create subdomain folder
-      if (!mkdir($domain_dir_path)) {
+      if (!mkdir($domain_dir_path, 0777, true)) {
           $errors[] = "Failed to create a subdirectory for your domain name, please try again later...";
       }
 
