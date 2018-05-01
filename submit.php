@@ -1,5 +1,6 @@
 <?php
   include_once "password-generator.php";
+  include_once "rrmdir.php";
   include "config.php";
 
   // Sanitize the domain string
@@ -39,8 +40,8 @@
 
       if (count($errors) == 0) {
           // Prepare SQL
-          $sql = "INSERT INTO users (userid, password, uid, gid, homedir, shell) VALUES ('". $clean_domain;
-          $sql += "','" . $generated_password . "', 5,6,'" . $domain_dir_path . "','bin/bash'";
+          $sql = "INSERT INTO users (userid, password, gid, homedir, shell) VALUES ('". $clean_domain;
+          $sql .= "','" . $generated_password . "',6,'" . $domain_dir_path . "','bin/bash');";
 
           echo $sql;
 
@@ -48,7 +49,7 @@
           if ($conn->query($sql) !== true) {
               $errors[] = "Failed to create a database record, please try again later";
               // In case of failure, don't forget to remove the directory
-              rmdir($subdomains.$clean_domain);
+              rrmdir($subdomains.$clean_domain);
           }
       }
   }
