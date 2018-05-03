@@ -41,11 +41,23 @@
       // Check for errors again
       if (count($errors) == 0) {
           // Prepare SQL
-          $sql = "INSERT INTO users (userid, password, gid, homedir, shell) VALUES ('". $clean_domain;
-          $sql .= "','" . $generated_password . "',11,'" . $domain_dir_path . "','/bin/bash');";
+          $sql = "CREATE DATABASE " . $clean_domain . ";";
+
+          $sql3 = "CREATE USER '" . $clean_domain . "'@'localhost' IDENTIFIED BY '". $generated_password . "';";
+          $sql4 = "GRANT ALL PRIVILEGES ON " . $clean_domain . " . * TO '" . $clean_domain ."'@'localhost';";
+          $sql5 = "FLUSH PRIVILEGES;";
+
+          $conn->query($sql);
+
+          $conn->query($sql3);
+          $conn->query($sql4);
+          $conn->query($sql5);
+
+          $sql2 = "INSERT INTO webserver.users (userid, password, gid, homedir, shell) VALUES ('". $clean_domain;
+          $sql2 .= "','" . $generated_password . "',11,'" . $domain_dir_path . "','/bin/bash');";
 
           // Exectute SQL
-          if ($conn->query($sql) !== true) {
+          if ($conn->query($sql2) !== true) {
               $errors[] = "Failed to create a database record, please try again later";
               // In case of failure, don't forget to remove the directory
               rrmdir($subdomains.$clean_domain);
@@ -105,6 +117,18 @@
           <dl class="row">
             <dt class="col-sm-3">Server name</dt>
             <dd class="col-sm-9"><?php echo $ftpserver; ?></dd>
+
+            <dt class="col-sm-3">Username</dt>
+            <dd class="col-sm-9"><?php echo $clean_domain ?></dd>
+
+            <dt class="col-sm-3">Password</dt>
+            <dd class="col-sm-9"><?php echo $generated_password ?></dd>
+          </dl>
+          <h3>MYSQL</h3>
+          <hr />
+          <dl class="row">
+            <dt class="col-sm-3">Admin portal</dt>
+            <dd class="col-sm-9"><a href="http://fei-ispwe-1.upceucebny.cz/phpmyadmin/">fei-ispwe-1.upceucebny.cz/phpmyadmin/</a></dd>
 
             <dt class="col-sm-3">Username</dt>
             <dd class="col-sm-9"><?php echo $clean_domain ?></dd>
